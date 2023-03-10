@@ -5,10 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 
-import com.mintic.tienda.entities.Proveedores;
+import com.mintic.tienda.entities.Publicaciones;
 
-public interface IProveedor extends CrudRepository<Proveedores, Long> {
+public interface IPublicaciones extends CrudRepository<IPublicaciones, Long> {
 	
 	@Query(value = "SELECT * FROM Proveedores c where c.nitProveedor=:nitProveedor", nativeQuery = true)
-	Proveedores buscarProveedorPorNit(@Param("nitProveedor") Long nitProveedor);
+	IPublicaciones buscarProveedorPorNit(@Param("nitProveedor") Long nitProveedor);
 }

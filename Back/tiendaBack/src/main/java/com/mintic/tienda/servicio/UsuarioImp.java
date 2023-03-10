@@ -58,12 +58,12 @@ public class UsuarioImp implements IUsuarioService {
 	private UsuarioDto mapUsuarioDto(Usuarios usuario) {
 		
 		return new UsuarioDto(
-				usuario.getId(),
-				usuario.getCedulaUsuario(),
-				usuario.getEmailUsuario(),
-				usuario.getNombreUsuario(),
-				usuario.getPassword(),
-				usuario.getUsuario()
+			usuario.getIDUsuario(),
+			usuario.getNombre(),
+			usuario.getApellido(),
+			usuario.getNombreUsuario(),
+			usuario.getContrasena(),
+			usuario.getCorreo()
 		);
 	}
 
@@ -77,28 +77,27 @@ public class UsuarioImp implements IUsuarioService {
 
 	private Usuarios buildUsuario(UsuarioDto usuarioDto) {
 		Usuarios myusuario = new Usuarios();
-		
-		Long id = usuarioDto.getId();
-		Long cedulaUsuario = usuarioDto.getCedulaUsuario();
-		String emailUsuario = usuarioDto.getEmailUsuario();
+			
+		String nombre = usuarioDto.getNombre();
+		String apellido = usuarioDto.getApellido();
 		String nombreUsuario = usuarioDto.getNombreUsuario();
-		String password = usuarioDto.getPassword();
-		String usuario = usuarioDto.getUsuario();
-		myusuario.setId(id);
-		if(cedulaUsuario != null) {
-			myusuario.setCedulaUsuario(cedulaUsuario);
+		String password = usuarioDto.getContrasena();
+		String correo = usuarioDto.getCorreo();
+
+		if(nombre != null) {
+			myusuario.setNombre(nombreUsuario);
 		}
-		if(emailUsuario != null) {
-			myusuario.setEmailUsuario(emailUsuario);
+		if(apellido != null) {
+			myusuario.setApellido(apellido);
 		}
 		if(nombreUsuario != null) {
 			myusuario.setNombreUsuario(nombreUsuario);
 		}
 		if(password != null) {
-			myusuario.setPassword(password);
+			myusuario.setContrasena(correo);
 		}
-		if(usuario != null) {
-			myusuario.setUsuario(usuario);
+		if(correo != null) {
+			myusuario.setCorreo(correo);
 		}
 		return myusuario;
 		
@@ -106,27 +105,26 @@ public class UsuarioImp implements IUsuarioService {
 	
 	private void updateUsuario(UsuarioDto usuarioDto, Usuarios myusuario) {
 		
-		Long id = usuarioDto.getId();
-		Long cedulaUsuario = usuarioDto.getCedulaUsuario();
-		String emailUsuario = usuarioDto.getEmailUsuario();
+		String nombre = usuarioDto.getNombre();
+		String apellido = usuarioDto.getApellido();
 		String nombreUsuario = usuarioDto.getNombreUsuario();
-		String password = usuarioDto.getPassword();
-		String usuario = usuarioDto.getUsuario();
-		
-		if(cedulaUsuario != null) {
-			myusuario.setCedulaUsuario(cedulaUsuario);
+		String password = usuarioDto.getContrasena();
+		String correo = usuarioDto.getCorreo();
+
+		if(nombre != null) {
+			myusuario.setNombre(nombreUsuario);
 		}
-		if(emailUsuario != null) {
-			myusuario.setEmailUsuario(emailUsuario);
+		if(apellido != null) {
+			myusuario.setApellido(apellido);
 		}
 		if(nombreUsuario != null) {
 			myusuario.setNombreUsuario(nombreUsuario);
 		}
 		if(password != null) {
-			myusuario.setPassword(password);
+			myusuario.setContrasena(correo);
 		}
-		if(usuario != null) {
-			myusuario.setUsuario(usuario);
+		if(correo != null) {
+			myusuario.setCorreo(correo);
 		}
 		
 		iUsuario.save(myusuario);

@@ -1,6 +1,6 @@
 package com.mintic.tienda.dto;
 
-public class ProveedoresDto {
+public class PublicacionesDto {
 	
 	private Long nitproveedor;
 	
@@ -12,11 +12,11 @@ public class ProveedoresDto {
 	
 	private String telefonoProveedor;
 	
-	public ProveedoresDto() {
+	public PublicacionesDto() {
 		
 	}
 
-	public ProveedoresDto(Long nitproveedor, String ciudadProveedor, String direccionProveedor, String nombreProveedor,
+	public PublicacionesDto(Long nitproveedor, String ciudadProveedor, String direccionProveedor, String nombreProveedor,
 			String telefonoProveedor) {
 		this.nitproveedor = nitproveedor;
 		this.ciudadProveedor = ciudadProveedor;

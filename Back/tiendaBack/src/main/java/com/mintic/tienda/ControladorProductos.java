@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mintic.tienda.dto.ClienteDto;
 import com.mintic.tienda.dto.LoginDto;
 import com.mintic.tienda.dto.ProductosDto;
-import com.mintic.tienda.dto.ProveedoresDto;
+import com.mintic.tienda.dto.PublicacionesDto;
 import com.mintic.tienda.dto.UsuarioDto;
 import com.mintic.tienda.entities.Productos;
 import com.mintic.tienda.entities.Usuarios;
