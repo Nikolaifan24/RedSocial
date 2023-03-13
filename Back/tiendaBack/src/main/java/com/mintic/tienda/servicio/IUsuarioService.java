@@ -15,20 +15,14 @@ import com.mintic.tienda.entities.Usuarios;
  * */
 public interface IUsuarioService {
 
-	int login(LoginDto usuarioDto);
-
-	List<Usuarios> getUsuarios();
+	List<Usuarios> listarUsuarios() ;
 	
-	UsuarioDto buscarUsuarioPorCedula(Long numeroCedula);
-
-	Usuarios loginUsuario(LoginDto usuario);
-
 	void crearUsuario(UsuarioDto usuarioDto);
 
-	void eliminarUsuario(Long cedulaUsuario);
+	void eliminarUsuario(String nombreUsuario);
 
-	void actualizarUsuario(Long cedulaUsuario, UsuarioDto usuarioDto);
+	void actualizarUsuario(String nombreUsuario, UsuarioDto usuarioDto);
 
-	
+	UsuarioDto buscarUsuarioPorNombre(String nombreUsuario); 
 
 }

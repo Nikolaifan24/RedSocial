@@ -2,14 +2,21 @@ package com.mintic.tienda.entities;
 
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /*
@@ -24,6 +31,19 @@ public class Usuarios {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IDUsuario;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Publicaciones> publicaciones;
+
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "usuarios_seguidores",
+        joinColumns = { @JoinColumn(name = "IDUsuarios") },
+        inverseJoinColumns = { @JoinColumn(name = "IDSeguidores") }
+    )
+    private List<Seguidores> seguidores;
 	
 	private String Nombre;
 	
@@ -40,8 +60,9 @@ public class Usuarios {
 	}
 	
 
-	public Usuarios(Long IDUsuario, String Nombre, String Apellido, String NombreUsuario, String contrasena, String correo) {
+	public Usuarios(Long IDUsuario, List<Seguidores> seguidores, String Nombre, String Apellido, String NombreUsuario, String contrasena, String correo) {
 		this.IDUsuario = IDUsuario;
+		this.seguidores = seguidores;
 		this.Nombre = Nombre;
 		this.Apellido = Apellido;
 		this.NombreUsuario = NombreUsuario;
@@ -55,6 +76,14 @@ public class Usuarios {
 
 	public void setIDUsuario(Long IDUsuario) {
 		this.IDUsuario = IDUsuario;
+	}
+
+	public List<Seguidores> getSeguidores() {
+		return this.seguidores;
+	}
+
+	public void setSeguidores(List<Seguidores> seguidores) {
+		this.seguidores = seguidores;
 	}
 
 	public String getNombre() {
@@ -97,5 +126,5 @@ public class Usuarios {
 		this.correo = correo;
 	}
 
-		
+			
 }

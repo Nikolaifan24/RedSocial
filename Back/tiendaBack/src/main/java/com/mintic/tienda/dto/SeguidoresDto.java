@@ -1,6 +1,6 @@
 package com.mintic.tienda.dto;
 
-public class ProductosDto {
+public class SeguidoresDto {
 	
 	private Long id;
 	
@@ -16,11 +16,11 @@ public class ProductosDto {
 	
 	private Double precioVenta;
 	
-	public ProductosDto() {
+	public SeguidoresDto() {
 		
 	}
 
-	public ProductosDto(Long id, Long codigoProducto, Double ivacompra, Long nitproveedor, String nombreProducto,
+	public SeguidoresDto(Long id, Long codigoProducto, Double ivacompra, Long nitproveedor, String nombreProducto,
 			Double precioCompra, Double precioVenta) {
 		this.id = id;
 		this.codigoProducto = codigoProducto;

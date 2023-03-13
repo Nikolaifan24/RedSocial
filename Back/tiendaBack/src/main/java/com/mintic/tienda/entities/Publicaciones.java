@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,86 +19,103 @@ public class Publicaciones {
 	public static final String TABLE_NAME = "proveedores";
 	
 	@Id
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long IDPublicacion;
 	
-	//@OneToMany
-	//@JoinColumn(name = "nitProveedor")
-	private Long nitProveedor;
-	//private List<Productos> productos;
+	@ManyToOne
+    @JoinColumn(name="IDUsuario")
+    private Usuarios usuarios;
 	
-	private String ciudadProveedor;
+	private String nombreUsuario;
+
+	private String titulo;
+
+	private String cuerpo;
+
+	private String hora;
+
+	private String fecha;
 	
-	private String direccionProveedor;
-	
-	private String nombreProveedor;
-	
-	private String telefonoProveedor;
+	private String publicacion;
 
 	public Publicaciones() {
 		
 	}
 
-	public Publicaciones(Long id, Long nitProveedor, String ciudadProveedor, String direccionProveedor,
-			String nombreProveedor, String telefonoProveedor) {
-		super();
-		this.id = id;
-		this.nitProveedor = nitProveedor;
-		this.ciudadProveedor = ciudadProveedor;
-		this.direccionProveedor = direccionProveedor;
-		this.nombreProveedor = nombreProveedor;
-		this.telefonoProveedor = telefonoProveedor;
+
+	public Publicaciones(Long IDPublicacion, Usuarios usuarios, String nombreUsuario, String titulo, String cuerpo, String hora, String fecha, String publicacion) {
+		this.IDPublicacion = IDPublicacion;
+		this.usuarios = usuarios;
+		this.nombreUsuario = nombreUsuario;
+		this.titulo = titulo;
+		this.cuerpo = cuerpo;
+		this.hora = hora;
+		this.fecha = fecha;
+		this.publicacion = publicacion;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIDPublicacion() {
+		return this.IDPublicacion;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIDPublicacion(Long IDPublicacion) {
+		this.IDPublicacion = IDPublicacion;
 	}
 
-	public Long getNitProveedor() {
-		return nitProveedor;
+	public Usuarios getUsuarios() {
+		return this.usuarios;
 	}
 
-	public void setNitProveedor(Long nitProveedor) {
-		this.nitProveedor = nitProveedor;
+	public void setUsuarios(Usuarios usuarios) {
+		this.usuarios = usuarios;
 	}
 
-	public String getCiudadProveedor() {
-		return ciudadProveedor;
+	public String getNombreUsuario() {
+		return this.nombreUsuario;
 	}
 
-	public void setCiudadProveedor(String ciudadProveedor) {
-		this.ciudadProveedor = ciudadProveedor;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getDireccionProveedor() {
-		return direccionProveedor;
+	public String getTitulo() {
+		return this.titulo;
 	}
 
-	public void setDireccionProveedor(String direccionProveedor) {
-		this.direccionProveedor = direccionProveedor;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getNombreProveedor() {
-		return nombreProveedor;
+	public String getCuerpo() {
+		return this.cuerpo;
 	}
 
-	public void setNombreProveedor(String nombreProveedor) {
-		this.nombreProveedor = nombreProveedor;
+	public void setCuerpo(String cuerpo) {
+		this.cuerpo = cuerpo;
 	}
 
-	public String getTelefonoProveedor() {
-		return telefonoProveedor;
+	public String getHora() {
+		return this.hora;
 	}
 
-	public void setTelefonoProveedor(String telefonoProveedor) {
-		this.telefonoProveedor = telefonoProveedor;
+	public void setHora(String hora) {
+		this.hora = hora;
 	}
 
+	public String getFecha() {
+		return this.fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getPublicacion() {
+		return this.publicacion;
+	}
+
+	public void setPublicacion(String publicacion) {
+		this.publicacion = publicacion;
+	}
 	
-	
-	
-
 }

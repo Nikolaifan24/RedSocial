@@ -1,6 +1,7 @@
 
 package com.mintic.tienda.servicio;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,56 +19,16 @@ import com.mintic.tienda.repositories.IUsuario;
 public class UsuarioImp implements IUsuarioService {
 
 	
-	
 	@Autowired
 	IUsuario iUsuario;
 	
-	@Override
-	public int login(LoginDto usuarioDto) {
-		int u = iUsuario.findByNombreUsuarioAndPassword(usuarioDto.getNombreUsuario(), usuarioDto.getPassword());
-		return u;
-	}
 	
 	@Override
-	public Usuarios loginUsuario(LoginDto usuarioDto) {
-		//return iUsuario.findByNameAndPassword(usuarioDto.getNombreUsuario(), usuarioDto.getPassword());
-		return null;
-	}
-
-	@Override
-	public List<Usuarios> getUsuarios() {
-
+	public List<Usuarios> listarUsuarios() {
 		return (List<Usuarios>) iUsuario.findAll();
 	}
 
 
-	@Override
-	public UsuarioDto buscarUsuarioPorCedula(Long cedulaUsuario) {
-		Usuarios usuario = null;
-		try {
-			
-			usuario = iUsuario.buscarUsuarioPorCedula(cedulaUsuario);
-			UsuarioDto usuarioDto = mapUsuarioDto(usuario);
-			return usuarioDto;
-		} catch (Exception e) {
-			return null;
-		}
-		
-	}
-
-	private UsuarioDto mapUsuarioDto(Usuarios usuario) {
-		
-		return new UsuarioDto(
-			usuario.getIDUsuario(),
-			usuario.getNombre(),
-			usuario.getApellido(),
-			usuario.getNombreUsuario(),
-			usuario.getContrasena(),
-			usuario.getCorreo()
-		);
-	}
-
-	
 
 	@Override
 	public void crearUsuario(UsuarioDto usuarioDto) {
@@ -77,13 +38,15 @@ public class UsuarioImp implements IUsuarioService {
 
 	private Usuarios buildUsuario(UsuarioDto usuarioDto) {
 		Usuarios myusuario = new Usuarios();
-			
-		String nombre = usuarioDto.getNombre();
+		
+		String nombre= usuarioDto.getNombre();
 		String apellido = usuarioDto.getApellido();
 		String nombreUsuario = usuarioDto.getNombreUsuario();
+		String emailUsuario = usuarioDto.getCorreo();
 		String password = usuarioDto.getContrasena();
-		String correo = usuarioDto.getCorreo();
-
+		String correo  = usuarioDto.getCorreo();
+		// myusuario.setID(id);
+		
 		if(nombre != null) {
 			myusuario.setNombre(nombreUsuario);
 		}
@@ -99,18 +62,22 @@ public class UsuarioImp implements IUsuarioService {
 		if(correo != null) {
 			myusuario.setCorreo(correo);
 		}
+		
+		
 		return myusuario;
 		
 	}
 	
 	private void updateUsuario(UsuarioDto usuarioDto, Usuarios myusuario) {
 		
-		String nombre = usuarioDto.getNombre();
+		String nombre= usuarioDto.getNombre();
 		String apellido = usuarioDto.getApellido();
 		String nombreUsuario = usuarioDto.getNombreUsuario();
+		String emailUsuario = usuarioDto.getCorreo();
 		String password = usuarioDto.getContrasena();
-		String correo = usuarioDto.getCorreo();
-
+		String correo  = usuarioDto.getCorreo();
+		// myusuario.setID(id);
+		
 		if(nombre != null) {
 			myusuario.setNombre(nombreUsuario);
 		}
@@ -132,23 +99,47 @@ public class UsuarioImp implements IUsuarioService {
 	
 
 	@Override
-	public void eliminarUsuario(Long cedulaUsuario) {
-		Usuarios usuario = iUsuario.buscarUsuarioPorCedula(cedulaUsuario);
+	public void eliminarUsuario(String nombreUsuario) {
+		Usuarios usuario = iUsuario.buscarUsuarioPornombreUsuario(nombreUsuario);
 		iUsuario.delete(usuario);
 		
 	}
 
 	@Override
-	public void actualizarUsuario(Long cedulaUsuario, UsuarioDto usuarioDto) {
+	public void actualizarUsuario(String nombreUsuario, UsuarioDto usuarioDto) {
 		
-		Usuarios usuario = iUsuario.buscarUsuarioPorCedula(cedulaUsuario);
+		Usuarios usuario = iUsuario.buscarUsuarioPornombreUsuario(nombreUsuario);
 		updateUsuario(usuarioDto, usuario);
 		
 	}
 
+	@Override
+	public UsuarioDto buscarUsuarioPorNombre(String nombreUsuario) {
+		Usuarios Usuario = null;
+		try {
+			Usuario = iUsuario.buscarUsuarioPornombreUsuario(nombreUsuario);
+			UsuarioDto  UsuarioDto = mapUsuarioDto(Usuario);
+			return UsuarioDto;
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+
+	private UsuarioDto mapUsuarioDto(Usuarios usuario) {
+		return new UsuarioDto(
+				usuario.getIDUsuario(),
+				usuario.getNombre(),
+				usuario.getApellido(),
+				usuario.getNombreUsuario(),
+				usuario.getContrasena(),
+				usuario.getCorreo()
+				
+			);		
+	}
+
 	
-	
-	
+
 
 
 }

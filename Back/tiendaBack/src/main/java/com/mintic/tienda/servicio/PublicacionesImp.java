@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.mintic.tienda.dto.ClienteDto;
 import com.mintic.tienda.dto.PublicacionesDto;
-import com.mintic.tienda.entities.Clientes;
 import com.mintic.tienda.entities.Publicaciones;
 import com.mintic.tienda.repositories.IPublicaciones;
 

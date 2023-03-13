@@ -3,6 +3,7 @@ package com.mintic.tienda;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mintic.tienda.dto.ClienteDto;
 import com.mintic.tienda.dto.LoginDto;
+import com.mintic.tienda.dto.SeguidoresDto;
 import com.mintic.tienda.dto.PublicacionesDto;
 import com.mintic.tienda.dto.UsuarioDto;
+import com.mintic.tienda.entities.Seguidores;
 import com.mintic.tienda.entities.Usuarios;
+import com.mintic.tienda.servicio.ISeguidoreService;
 import com.mintic.tienda.servicio.IUsuarioService;
 
 @RestController
-public class ControladorUsuarios {
+public class ControladorSeguidores {
 	
 	@Autowired
 	IUsuarioService iUsuario;
@@ -54,5 +58,6 @@ public class ControladorUsuarios {
 		return iUsuario.listarUsuarios();
 	}
 	
+
 	
 }

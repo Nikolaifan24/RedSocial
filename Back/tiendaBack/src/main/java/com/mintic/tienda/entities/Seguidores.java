@@ -4,111 +4,73 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = Productos.TABLE_NAME)
-public class Productos {
+@Table(name = Seguidores.TABLE_NAME)
+public class Seguidores {
 	
-	public static final String TABLE_NAME = "productos";
+	public static final String TABLE_NAME = "Seguidores";
 	
 	@Id
-	private Long id;
+	private Long IDSeguidor;
 	
-	//@OneToMany
-	//@JoinColumn(name = "codigoProducto")
-	
-	private Long codigoProducto;
-	
-	private Double ivaCompra;
-	
-	//@ManyToOne
-	private Long idProveedor;
-	
-	private String nombreProducto;
-	
-	private Double precioCompra;
-	
-	private Double precioVenta;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "followers")
+    private List<Usuarios> usuarios;
 
-	public Productos() {
+	private String nombreUsuario;
+
+	private int numeroSeguidores;
+		
+	public Seguidores() {
 		
 	}
 
-	public Productos(Long id, Long codigoProducto, Double ivaCompra, Long idProveedor, String nombreProducto,
-			Double precioCompra, Double precioVenta) {
-		super();
-		this.id = id;
-		this.codigoProducto = codigoProducto;
-		this.ivaCompra = ivaCompra;
-		this.idProveedor = idProveedor;
-		this.nombreProducto = nombreProducto;
-		this.precioCompra = precioCompra;
-		this.precioVenta = precioVenta;
+
+	public Seguidores(Long IDSeguidor, List<Usuarios> usuarios, String nombreUsuario, int numeroSeguidores) {
+		this.IDSeguidor = IDSeguidor;
+		this.usuarios = usuarios;
+		this.nombreUsuario = nombreUsuario;
+		this.numeroSeguidores = numeroSeguidores;
 	}
 
-	public Long getId() {
-		return id;
+
+	public Long getIDSeguidor() {
+		return this.IDSeguidor;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIDSeguidor(Long IDSeguidor) {
+		this.IDSeguidor = IDSeguidor;
 	}
 
-	public Long getCodigoProducto() {
-		return codigoProducto;
+	public List<Usuarios> getUsuarios() {
+		return this.usuarios;
 	}
 
-	public void setCodigoProducto(Long codigoProducto) {
-		this.codigoProducto = codigoProducto;
+	public void setUsuarios(List<Usuarios> usuarios) {
+		this.usuarios = usuarios;
 	}
 
-	public Double getIvaCompra() {
-		return ivaCompra;
+	public String getNombreUsuario() {
+		return this.nombreUsuario;
 	}
 
-	public void setIvaCompra(Double ivaCompra) {
-		this.ivaCompra = ivaCompra;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public Long getIdProveedor() {
-		return idProveedor;
+	public int getNumeroSeguidores() {
+		return this.numeroSeguidores;
 	}
 
-	public void setIdProveedor(Long idProveedor) {
-		this.idProveedor = idProveedor;
+	public void setNumeroSeguidores(int numeroSeguidores) {
+		this.numeroSeguidores = numeroSeguidores;
 	}
-
-	public String getNombreProducto() {
-		return nombreProducto;
-	}
-
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
-	}
-
-	public Double getPrecioCompra() {
-		return precioCompra;
-	}
-
-	public void setPrecioCompra(Double precioCompra) {
-		this.precioCompra = precioCompra;
-	}
-
-	public Double getPrecioVenta() {
-		return precioVenta;
-	}
-
-	public void setPrecioVenta(Double precioVenta) {
-		this.precioVenta = precioVenta;
-	}
-
-	
-	
-
-	
+		
 }
