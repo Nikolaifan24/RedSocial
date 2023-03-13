@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = Seguidores.TABLE_NAME)
 public class Seguidores {
@@ -21,6 +23,7 @@ public class Seguidores {
 	@Id
 	private Long IDSeguidor;
 	
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "followers")
     private List<Usuarios> usuarios;
 

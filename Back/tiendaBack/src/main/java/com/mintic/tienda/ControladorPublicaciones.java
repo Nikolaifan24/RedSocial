@@ -9,7 +9,7 @@ import com.mintic.tienda.dto.PublicacionesDto;
 import com.mintic.tienda.servicio.IPublicacionesService;
 
 @RestController
-public class ControladorProveedores {
+public class ControladorPublicaciones {
 	
 	@Autowired
 	IPublicacionesService iProveedor;

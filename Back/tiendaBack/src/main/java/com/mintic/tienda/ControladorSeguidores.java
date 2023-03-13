@@ -20,7 +20,6 @@ import com.mintic.tienda.dto.PublicacionesDto;
 import com.mintic.tienda.dto.UsuarioDto;
 import com.mintic.tienda.entities.Seguidores;
 import com.mintic.tienda.entities.Usuarios;
-import com.mintic.tienda.servicio.ISeguidoreService;
 import com.mintic.tienda.servicio.IUsuarioService;
 
 @RestController

@@ -11,17 +11,16 @@ import com.mintic.tienda.entities.Seguidores;
 import com.mintic.tienda.repositories.ISeguidores;
 
 @Service
-public class SeguidoresImp implements ISeguidoreService {
+public class SeguidoresImp implements ISeguidoresService {
 
 	@Autowired
 	ISeguidores iSeguidor;
 	
-	
+
 	@Override
 	public List<Seguidores> listarSeguidores() {
 		return (List<Seguidores>) iSeguidor.findAll();
 	}
-
 
 
 	@Override
@@ -31,32 +30,20 @@ public class SeguidoresImp implements ISeguidoreService {
 	}
 
 	private Seguidores buildSeguidor(SeguidoresDto SeguidoresDto) {
-		Seguidores mySeguidores= new Seguidores();
+		Seguidores mySeguidor= new Seguidores();
 		
-		String nombre= SeguidoresDto.getNombre();
-		String apellido = SeguidoresDto.getApellido();
-		String nombreSeguidores= SeguidoresDto.getNombreSeguidor();
-		String emailSeguidores= SeguidoresDto.getCorreo();
-		String password = SeguidoresDto.getContrasena();
-		String correo  = SeguidoresDto.getCorreo();
-		// mySeguidor.setID(id);
+		String nombreUsuario= SeguidoresDto.getNombreUsuario();
+		int numeroSeguidores = SeguidoresDto.getNumeroSeguidores();
 		
-		if(nombre != null) {
-			mySeguidor.setNombre(nombreSeguidor);
-		}
-		if(apellido != null) {
-			mySeguidor.setApellido(apellido);
-		}
-		if(nombreSeguidores!= null) {
-			mySeguidor.setNombreSeguidor(nombreSeguidor);
-		}
-		if(password != null) {
-			mySeguidor.setContrasena(correo);
-		}
-		if(correo != null) {
-			mySeguidor.setCorreo(correo);
-		}
 		
+		
+		if(nombreUsuario != null) {
+			mySeguidor.setNombreUsuario(nombreUsuario);
+		}
+		if(numeroSeguidores != 0) {
+			mySeguidor.setNumeroSeguidores(numeroSeguidores);
+		}
+				
 		
 		return mySeguidor;
 		
@@ -64,28 +51,15 @@ public class SeguidoresImp implements ISeguidoreService {
 	
 	private void updateSeguidor(SeguidoresDto SeguidoresDto, Seguidores mySeguidor) {
 		
-		String nombre= SeguidoresDto.getNombre();
-		String apellido = SeguidoresDto.getApellido();
-		String nombreSeguidores= SeguidoresDto.getNombreSeguidor();
-		String emailSeguidores= SeguidoresDto.getCorreo();
-		String password = SeguidoresDto.getContrasena();
-		String correo  = SeguidoresDto.getCorreo();
-		// mySeguidor.setID(id);
+		String nombreUsuario= SeguidoresDto.getNombreUsuario();
+		int numeroSeguidores = SeguidoresDto.getNumeroSeguidores();
 		
-		if(nombre != null) {
-			mySeguidor.setNombre(nombreSeguidor);
+		
+		if(nombreUsuario != null) {
+			mySeguidor.setNombreUsuario(nombreUsuario);
 		}
-		if(apellido != null) {
-			mySeguidor.setApellido(apellido);
-		}
-		if(nombreSeguidores!= null) {
-			mySeguidor.setNombreSeguidor(nombreSeguidor);
-		}
-		if(password != null) {
-			mySeguidor.setContrasena(correo);
-		}
-		if(correo != null) {
-			mySeguidor.setCorreo(correo);
+		if(numeroSeguidores != 0) {
+			mySeguidor.setNumeroSeguidores(numeroSeguidores);
 		}
 		
 		iSeguidor.save(mySeguidor);
@@ -93,26 +67,26 @@ public class SeguidoresImp implements ISeguidoreService {
 	
 
 	@Override
-	public void eliminarSeguidor(String nombreSeguidor) {
-		Seguidores Seguidores= iSeguidor.buscarSeguidorPornombreSeguidor(nombreSeguidor);
-		iSeguidor.delete(Seguidor);
+	public void eliminarSeguidor(String nombreUsuario) {
+		Seguidores Seguidores= iSeguidor.buscarUsuarioPornombreUsuario(nombreUsuario);
+		iSeguidor.delete(Seguidores);
 		
 	}
 
 	@Override
-	public void actualizarSeguidor(String nombreSeguidor, SeguidoresDto SeguidoresDto) {
+	public void actualizarSeguidor(String nombreUsuario, SeguidoresDto SeguidoresDto) {
 		
-		Seguidores Seguidores= iSeguidor.buscarSeguidorPornombreSeguidor(nombreSeguidor);
-		updateSeguidor(SeguidoresDto, Seguidor);
+		Seguidores Seguidores= iSeguidor.buscarUsuarioPornombreUsuario(nombreUsuario);
+		updateSeguidor(SeguidoresDto, Seguidores);
 		
 	}
 
 	@Override
-	public SeguidoresDto buscarSeguidorPorNombre(String nombreSeguidor) {
+	public SeguidoresDto buscarSeguidorPorNombre(String nombreUsuario) {
 		Seguidores Seguidores= null;
 		try {
-			Seguidores= iSeguidor.buscarSeguidorPornombreSeguidor(nombreSeguidor);
-			SeguidoresDto  SeguidoresDto = mapSeguidoresDto(Seguidor);
+			Seguidores= iSeguidor.buscarUsuarioPornombreUsuario(nombreUsuario);
+			SeguidoresDto  SeguidoresDto = mapSeguidoresDto(Seguidores);
 			return SeguidoresDto;
 		} catch (Exception e) {
 			return null;
@@ -123,16 +97,12 @@ public class SeguidoresImp implements ISeguidoreService {
 	private SeguidoresDto mapSeguidoresDto(Seguidores Seguidor) {
 		return new SeguidoresDto(
 				Seguidor.getIDSeguidor(),
-				Seguidor.getNombre(),
-				Seguidor.getApellido(),
-				Seguidor.getNombreSeguidor(),
-				Seguidor.getContrasena(),
-				Seguidor.getCorreo()
+				Seguidor.getNombreUsuario(),
+				Seguidor.getNumeroSeguidores()
 				
 			);		
 	}
 
-	
 
 
 	

@@ -11,7 +11,9 @@ public interface ISeguidoresService {
 
 	void crearSeguidor(SeguidoresDto SeguidoresDto);
 
-	SeguidoresDto buscarProductoPorCodigo(Long codigoProducto);
+	void eliminarSeguidor(String nombreSeguidor);
 
-	List<Seguidores> getSeguidores();
+	SeguidoresDto buscarSeguidorPorNombre(String nombreSeguidor);
+	
+	void actualizarSeguidor(String nombreUsuario, SeguidoresDto SeguidoresDto);
 }

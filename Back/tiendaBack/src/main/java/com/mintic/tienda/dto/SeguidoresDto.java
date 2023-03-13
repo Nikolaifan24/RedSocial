@@ -2,92 +2,46 @@ package com.mintic.tienda.dto;
 
 public class SeguidoresDto {
 	
-	private Long id;
+	private Long IDSeguidor;
 	
-	private Long codigoProducto;
-	
-	private Double ivacompra;
-	
-	private Long nitproveedor;
-	
-	private String nombreProducto;
-	
-	private Double precioCompra;
-	
-	private Double precioVenta;
+	private String nombreUsuario;
+
+	private int numeroSeguidores;
 	
 	public SeguidoresDto() {
 		
 	}
 
-	public SeguidoresDto(Long id, Long codigoProducto, Double ivacompra, Long nitproveedor, String nombreProducto,
-			Double precioCompra, Double precioVenta) {
-		this.id = id;
-		this.codigoProducto = codigoProducto;
-		this.ivacompra = ivacompra;
-		this.nitproveedor = nitproveedor;
-		this.nombreProducto = nombreProducto;
-		this.precioCompra = precioCompra;
-		this.precioVenta = precioVenta;
+
+	public SeguidoresDto(Long IDSeguidor, String nombreUsuario, int numeroSeguidores) {
+		this.IDSeguidor = IDSeguidor;
+		this.nombreUsuario = nombreUsuario;
+		this.numeroSeguidores = numeroSeguidores;
+	}
+		
+
+	public Long getIDSeguidor() {
+		return this.IDSeguidor;
 	}
 
-	public Long getId() {
-		return id;
+	public void setIDSeguidor(Long IDSeguidor) {
+		this.IDSeguidor = IDSeguidor;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public String getNombreUsuario() {
+		return this.nombreUsuario;
 	}
 
-	public Long getCodigoProducto() {
-		return codigoProducto;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public void setCodigoProducto(Long codigoProducto) {
-		this.codigoProducto = codigoProducto;
+	public int getNumeroSeguidores() {
+		return this.numeroSeguidores;
 	}
 
-	public Double getIvacompra() {
-		return ivacompra;
+	public void setNumeroSeguidores(int numeroSeguidores) {
+		this.numeroSeguidores = numeroSeguidores;
 	}
-
-	public void setIvacompra(Double ivacompra) {
-		this.ivacompra = ivacompra;
-	}
-
-	public Long getNitproveedor() {
-		return nitproveedor;
-	}
-
-	public void setNitproveedor(Long nitproveedor) {
-		this.nitproveedor = nitproveedor;
-	}
-
-	public String getNombreProducto() {
-		return nombreProducto;
-	}
-
-	public void setNombreProducto(String nombreProducto) {
-		this.nombreProducto = nombreProducto;
-	}
-
-	public Double getPrecioCompra() {
-		return precioCompra;
-	}
-
-	public void setPrecioCompra(Double precioCompra) {
-		this.precioCompra = precioCompra;
-	}
-
-	public Double getPrecioVenta() {
-		return precioVenta;
-	}
-
-	public void setPrecioVenta(Double precioVenta) {
-		this.precioVenta = precioVenta;
-	}
-
-	
-	
 
 }
