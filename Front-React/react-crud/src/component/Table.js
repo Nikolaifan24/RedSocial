@@ -12,9 +12,7 @@ export default class Table extends Component {
 
   componentDidMount() {
     //Inicializa la tabla
-    this.personaService
-      .getAll()
-      .then((data) => this.setState({ personas: data }));
+    this.personaService.getAll().then((data) => console.log(data));
   }
   render() {
     return (

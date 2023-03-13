@@ -6,7 +6,7 @@ export class PersonaService {
   getAll() {
     //Consumir la API rest
     return axios.get(this.baseUrl).then((res) => {
-      console.log(res);
+      console.log(res.data);
     });
   }
 }
