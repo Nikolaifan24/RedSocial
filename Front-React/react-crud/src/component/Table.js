@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { PersonaService } from "../service/PersonaService";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 
 export default class Table extends Component {
   constructor() {
@@ -14,6 +16,11 @@ export default class Table extends Component {
       .then((data) => this.setState({ personas: data }));
   }*/
   render() {
-    return <h1>Hola mundo</h1>;
+    return (
+      <DataTable>
+        <Column header="ID"></Column>
+        <Column header="Nombre"></Column>
+      </DataTable>
+    );
   }
 }
