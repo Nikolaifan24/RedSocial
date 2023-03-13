@@ -10,7 +10,8 @@ export default class Table extends Component {
     this.personaService = new PersonaService();
   }
 
-  componentDidMount() { //Inicializa la tabla
+  componentDidMount() {
+    //Inicializa la tabla
     this.personaService
       .getAll()
       .then((data) => this.setState({ personas: data }));
