@@ -22,11 +22,7 @@ import com.mintic.tienda.entities.Usuarios;
  * */
 public interface IUsuario extends CrudRepository<Usuarios, Long> {
 
-	@Query("select count(*) from Usuarios as p where p.nombreUsuario= :nombreUsuario and p.password=:password")
-	Integer findByNombreUsuarioAndPassword(@Param("nombreUsuario") String nombreUsuario,
-			@Param("password") String password);
-	
-	@Query(value = "SELECT * FROM Usuarios p where p.cedulaUsuario=:cedulaUsuario", nativeQuery = true)
-	Usuarios buscarUsuarioPorCedula(@Param("cedulaUsuario") Long cedulaUsuario);
+	@Query(value = "SELECT * FROM Usuarios u where u.nombreUsuario =:nombreUsuario", nativeQuery = true)
+	Usuarios buscarUsuarioPornombreUsuario(@Param("nombreUsuario") String nombreUsuario);
 
 }

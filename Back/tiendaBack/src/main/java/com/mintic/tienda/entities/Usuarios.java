@@ -2,14 +2,21 @@ package com.mintic.tienda.entities;
 
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /*
@@ -23,96 +30,101 @@ public class Usuarios {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	//@OneToMany
-	//@JoinColumn(name = "cedulaUusario")
-	//private List<Ventas> ventas;
-	
-	private Long cedulaUsuario;
-	
-	private String emailUsuario;
+	private Long IDUsuario;
 
-	private String nombreUsuario;
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Publicaciones> publicaciones;
 
-	private String password;
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "usuarios_seguidores",
+        joinColumns = { @JoinColumn(name = "IDUsuarios") },
+        inverseJoinColumns = { @JoinColumn(name = "IDSeguidores") }
+    )
+    private List<Seguidores> seguidores;
+	
+	private String Nombre;
+	
+	private String Apellido;
 
-	private String usuario;
+	private String NombreUsuario;
+
+	private String contrasena;
+
+	private String correo;
 	
 	public Usuarios() {
 		
 	}
 	
 
-	public Usuarios(Long id, Long cedulaUsuario, String emailUsuario, String nombreUsuario, String password,
-			String usuario) {
-		this.id = id;
-		this.cedulaUsuario = cedulaUsuario;
-		this.emailUsuario = emailUsuario;
-		this.nombreUsuario = nombreUsuario;
-		this.password = password;
-		this.usuario = usuario;
+	public Usuarios(Long IDUsuario, List<Seguidores> seguidores, String Nombre, String Apellido, String NombreUsuario, String contrasena, String correo) {
+		this.IDUsuario = IDUsuario;
+		this.seguidores = seguidores;
+		this.Nombre = Nombre;
+		this.Apellido = Apellido;
+		this.NombreUsuario = NombreUsuario;
+		this.contrasena = contrasena;
+		this.correo = correo;
 	}
 
-
-	public Long getId() {
-		return id;
+	public Long getIDUsuario() {
+		return this.IDUsuario;
 	}
 
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setIDUsuario(Long IDUsuario) {
+		this.IDUsuario = IDUsuario;
 	}
 
-
-	public Long getCedulaUsuario() {
-		return cedulaUsuario;
+	public List<Seguidores> getSeguidores() {
+		return this.seguidores;
 	}
 
-
-	public void setCedulaUsuario(Long cedulaUusario) {
-		this.cedulaUsuario = cedulaUusario;
+	public void setSeguidores(List<Seguidores> seguidores) {
+		this.seguidores = seguidores;
 	}
 
-
-	public String getEmailUsuario() {
-		return emailUsuario;
+	public String getNombre() {
+		return this.Nombre;
 	}
 
-
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
+	public void setNombre(String Nombre) {
+		this.Nombre = Nombre;
 	}
 
+	public String getApellido() {
+		return this.Apellido;
+	}
+
+	public void setApellido(String Apellido) {
+		this.Apellido = Apellido;
+	}
 
 	public String getNombreUsuario() {
-		return nombreUsuario;
+		return this.NombreUsuario;
 	}
 
-
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setNombreUsuario(String NombreUsuario) {
+		this.NombreUsuario = NombreUsuario;
 	}
 
-
-	public String getPassword() {
-		return password;
+	public String getContrasena() {
+		return this.contrasena;
 	}
 
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
-
-	public String getUsuario() {
-		return usuario;
+	public String getCorreo() {
+		return this.correo;
 	}
 
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
-	
+			
 }

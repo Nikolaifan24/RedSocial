@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mintic.tienda.dto.ProveedoresDto;
-import com.mintic.tienda.servicio.IProveedorService;
+import com.mintic.tienda.dto.PublicacionesDto;
+import com.mintic.tienda.servicio.IPublicacionesService;
 
 @RestController
-public class ControladorProveedores {
+public class ControladorPublicaciones {
 	
 	@Autowired
-	IProveedorService iProveedor;
+	IPublicacionesService iProveedor;
 	
-	ProveedoresDto proveedorDto;
+	PublicacionesDto proveedorDto;
 	
 	@GetMapping("/proveedores/{nitProveedor}")
-	public ProveedoresDto buscarProveedorPorNit(@PathVariable Long nitProveedor) {
+	public PublicacionesDto buscarProveedorPorNit(@PathVariable Long nitProveedor) {
 		return iProveedor.buscarProveedorPorNit(nitProveedor);
 	}
 }

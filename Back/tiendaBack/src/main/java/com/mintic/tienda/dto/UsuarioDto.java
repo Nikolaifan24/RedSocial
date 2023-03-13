@@ -2,83 +2,78 @@ package com.mintic.tienda.dto;
 
 public class UsuarioDto {
 	
-	private Long id;
-
-	private Long cedulaUsuario;
+	private Long IDUsuario;
 	
-	private String emailUsuario;
+	private String Nombre;
+	
+	private String Apellido;
 
-	private String nombreUsuario;
+	private String NombreUsuario;
 
-	private String password;
+	private String contrasena;
 
-	private String usuario;
+	private String correo;
 	
 	public UsuarioDto() {
 		
 	}
 
-	public UsuarioDto(Long id, Long cedulaUsuario, String emailUsuario, String nombreUsuario, String password,
-			String usuario) {
-		super();
-		this.id = id;
-		this.cedulaUsuario = cedulaUsuario;
-		this.emailUsuario = emailUsuario;
-		this.nombreUsuario = nombreUsuario;
-		this.password = password;
-		this.usuario = usuario;
+
+	public UsuarioDto(Long IDUsuario, String Nombre, String Apellido, String NombreUsuario, String contrasena, String correo) {
+		this.IDUsuario = IDUsuario;
+		this.Nombre = Nombre;
+		this.Apellido = Apellido;
+		this.NombreUsuario = NombreUsuario;
+		this.contrasena = contrasena;
+		this.correo = correo;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getIDUsuario() {
+		return this.IDUsuario;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIDUsuario(Long IDUsuario) {
+		this.IDUsuario = IDUsuario;
 	}
 
-	public Long getCedulaUsuario() {
-		return cedulaUsuario;
+	public String getNombre() {
+		return this.Nombre;
 	}
 
-	public void setCedulaUsuario(Long cedulaUsuario) {
-		this.cedulaUsuario = cedulaUsuario;
+	public void setNombre(String Nombre) {
+		this.Nombre = Nombre;
 	}
 
-	public String getEmailUsuario() {
-		return emailUsuario;
+	public String getApellido() {
+		return this.Apellido;
 	}
 
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
+	public void setApellido(String Apellido) {
+		this.Apellido = Apellido;
 	}
 
 	public String getNombreUsuario() {
-		return nombreUsuario;
+		return this.NombreUsuario;
 	}
 
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
+	public void setNombreUsuario(String NombreUsuario) {
+		this.NombreUsuario = NombreUsuario;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContrasena() {
+		return this.contrasena;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getCorreo() {
+		return this.correo;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
-
-	
-	
-	
-	
+		
 }
