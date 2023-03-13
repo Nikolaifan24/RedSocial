@@ -17,44 +17,43 @@ import com.mintic.tienda.dto.ClienteDto;
 import com.mintic.tienda.dto.LoginDto;
 import com.mintic.tienda.dto.SeguidoresDto;
 import com.mintic.tienda.dto.PublicacionesDto;
-import com.mintic.tienda.dto.UsuarioDto;
+import com.mintic.tienda.dto.SeguidoresDto;
 import com.mintic.tienda.entities.Seguidores;
-import com.mintic.tienda.entities.Usuarios;
-import com.mintic.tienda.servicio.IUsuarioService;
+import com.mintic.tienda.servicio.ISeguidoresService;
 
 @RestController
 public class ControladorSeguidores {
 	
 	@Autowired
-	IUsuarioService iUsuario;
+	ISeguidoresService iSeguidores;
 	
-	UsuarioDto UsuarioDto;
+	SeguidoresDto SeguidoresDto;
 	
 	@CrossOrigin(origins = "http://localhost:8091")
-	@GetMapping("/usuario/{nombreUsuario}")
-	public UsuarioDto MostarUsuarioPorNombre(@PathVariable String nombreUsuario) {
-		return iUsuario.buscarUsuarioPorNombre(nombreUsuario);
+	@GetMapping("/Seguidores/{nombreSeguidores}")
+	public SeguidoresDto MostarSeguidoresPorNombre(@PathVariable String nombreSeguidores) {
+		return iSeguidores.buscarSeguidorPorNombre(nombreSeguidores);
 	}
 	
 	
-	@PostMapping("/crearUsuario")
-	public void crearUsuario(@RequestBody UsuarioDto UsuarioDto) {
-		iUsuario.crearUsuario(UsuarioDto);
+	@PostMapping("/crearSeguidores")
+	public void crearSeguidores(@RequestBody SeguidoresDto SeguidoresDto) {
+		iSeguidores.crearSeguidor(SeguidoresDto);
 	}
 	
-	@DeleteMapping("/eliminarUsuario/{nombreUsuario}")
-	public void eliminarUsuario(@PathVariable String nombreUsuario) {
-		iUsuario.eliminarUsuario(nombreUsuario);
+	@DeleteMapping("/eliminarSeguidores/{nombreSeguidores}")
+	public void eliminarSeguidores(@PathVariable String nombreSeguidores) {
+		iSeguidores.eliminarSeguidor(nombreSeguidores);
 	}
 	
-	@PatchMapping("/actualizarUsuario/{nombreUsuario}")
-	public void actualizaralUsuario(@PathVariable String nombreUsuario, @RequestBody UsuarioDto UsuarioDto) {
-		iUsuario.actualizarUsuario(nombreUsuario, UsuarioDto);;
+	@PatchMapping("/actualizarSeguidores/{nombreSeguidores}")
+	public void actualizaralSeguidores(@PathVariable String nombreSeguidores, @RequestBody SeguidoresDto SeguidoresDto) {
+		iSeguidores.actualizarSeguidor(nombreSeguidores, SeguidoresDto);;
 	}
 	
-	@GetMapping("/usuarioslistar")
-	public List<Usuarios> listaUsuario() {
-		return iUsuario.listarUsuarios();
+	@GetMapping("/Seguidoresslistar")
+	public List<Seguidores> listaSeguidores() {
+		return iSeguidores.listarSeguidores();
 	}
 	
 

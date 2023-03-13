@@ -8,7 +8,7 @@ import java.util.List;
 import com.mintic.tienda.entities.Publicaciones;
 
 
-public interface IPublicaciones extends CrudRepository<IPublicaciones, Long> {
+public interface IPublicaciones extends CrudRepository<Publicaciones, Long> {
 	
 	@Query(value = "SELECT * FROM publicaciones p INNER JOIN usuario u ON p.IDUsuario = u.IDUsuario WHERE u.NombreUsuario =: nombreUsuario ", nativeQuery = true)
 	List<Publicaciones> buscarPublicacionesPorNombreUsuario(@Param("nombreUsuario") String nombreUsuario);

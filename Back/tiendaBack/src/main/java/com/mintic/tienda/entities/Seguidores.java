@@ -24,7 +24,7 @@ public class Seguidores {
 	private Long IDSeguidor;
 	
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "followers")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "seguidores")
     private List<Usuarios> usuarios;
 
 	private String nombreUsuario;

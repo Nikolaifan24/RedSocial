@@ -33,7 +33,7 @@ public class Usuarios {
 	private Long IDUsuario;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuarios")
 	private List<Publicaciones> publicaciones;
 
 	@JsonIgnore
