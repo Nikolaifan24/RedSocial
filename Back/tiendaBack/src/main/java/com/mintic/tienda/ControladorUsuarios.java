@@ -2,7 +2,11 @@ package com.mintic.tienda;
 
 import java.util.List;
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,13 +25,13 @@ import com.mintic.tienda.servicio.IUsuarioService;
 
 @RestController
 public class ControladorUsuarios {
-	
+
 	@Autowired
 	IUsuarioService iUsuario;
 	
 	UsuarioDto UsuarioDto;
 	
-	@CrossOrigin(origins = "http://localhost:8091")
+	@CrossOrigin(origins = "http://localhost:8090")
 	@GetMapping("/usuario/{nombreUsuario}")
 	public UsuarioDto MostarUsuarioPorNombre(@PathVariable String nombreUsuario) {
 		return iUsuario.buscarUsuarioPorNombre(nombreUsuario);
@@ -49,10 +53,12 @@ public class ControladorUsuarios {
 		iUsuario.actualizarUsuario(nombreUsuario, UsuarioDto);;
 	}
 	
-	@GetMapping("/usuarioslistar")
+	@GetMapping("user/usuarioslistar")
 	public List<Usuarios> listaUsuario() {
+		System.out.println("Estoy ingresando al metodo");
 		return iUsuario.listarUsuarios();
 	}
 	
 	
+ 
 }
